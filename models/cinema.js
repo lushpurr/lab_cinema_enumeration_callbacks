@@ -27,15 +27,22 @@ Cinema.prototype.filmsFromYear = function(year) {
 };
 
 Cinema.prototype.filmsOverLength = function(length) {
-  const isOverLength = this.films.every(film => film.length > length);
-  return isOverLength;
+  return this.films.every(film => film.length > length);
 };
 
 Cinema.prototype.totalMinutes = function() {
-  const total = this.films.map(film => film.length).reduce((prev, curr) => prev + curr, 0);
-  return total;
+  return this.films.reduce((total, film) => {
+    return total += film.length;
+  }, 0);
+  };
 
-};
+//  this also works
+//  Cinema.prototype.totalMinutes = function() {
+//   const total = this.films.map(film => film.length).reduce((prev, curr) => prev + curr, 0);
+//   return total;
+
+// };
+
 
 Cinema.prototype.filmsByProperty = function(property, value) {
 
